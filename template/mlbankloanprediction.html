@@ -1,0 +1,78 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" dir="ltr">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+    <title>BankLoanPrediction</title>
+</head>
+<body>
+    <div class="container">
+        <h1 style="color: #990202;">Bank Loan Prediction</h1>
+        <br>
+        <h3 style="color: #02084f;">Please select from the below options to predict the bank loan approval status</h3>
+        <br>
+    </div>
+    <div id="container" class="container">
+        <form method="POST">{%csrf_token%}
+            <select name="Gender" id="Gender" required>
+                <option value="">Gender</option>
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+            </select><br>
+            <br>
+            <select name="Married" id="Married" required>
+                <option value="">Marital Status</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+            <br>
+            <select name="Dependents" id="Dependents" required>
+                <option value="">Dependents</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3+</option>
+            </select><br>
+            <br>
+            <select name="Education" id="Education" required>
+                <option value="">Education</option>
+                <option value="0">Graduate</option>
+                <option value="1">Not Graduate</option>
+            </select><br>
+            <br>
+            <select name="Self_Employed" id="Self_Employed" required>
+                <option value="">Self_Employed</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+            <br>
+            <input type="number" name="ApplicantIncome" id="ApplicantIncome" step="any" required value="" placeholder="ApplicantIncome" min="5" max="12"><br><br>
+            <input type="number" name="LoanAmount" id="LoanAmount" step="any" required value="" placeholder="LoanAmount" min="2" max="7"><br><br>
+            <input type="number" name="Loan_amount_term" id="Loan_amount_term" step="any" required value="" placeholder="Loan_amount_term" min="2" max="7"><br><br>
+            <select name="Credit_History" id="Credit_History">
+                <option value="">Credit History</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+            <br>
+            <select name="Property_area" id="Property_area">
+                <option value="">Residence</option>
+                <option value="0">Rural</option>
+                <option value="1">Semi-Urban</option>
+                <option value="2">Urban</option>
+            </select><br>
+            <br>
+            <input type="submit" value="submit" name="submit">
+        </form>
+        <br>
+        {% if d%}
+        {%else%}
+        <label for="Loan_approved_status">Loan approval status for given inputs:</label>
+        <input type="text" name="" value="{{ans}}" disabled>
+        {%endif%}
+    </div>
+    
+</body>
+</html>
